@@ -70,6 +70,17 @@ func Balanceada(cadena string) bool {
 	return stack.IsEmpty()
 }
 
-// func UnirColas(q1, q2 *queue.Queue[int]) queue.Queue[int] {
-// 	// TODO
-// }
+func UnirColas(q1, q2 *queue.Queue[int]) queue.Queue[int] {
+	// TODO
+	qNew := queue.NewQueue[int](5)
+
+	for !q1.IsEmpty() {
+		dequeValue, _ := q1.Dequeue()
+		qNew.Enqueue(dequeValue)
+	}
+	for !q2.IsEmpty() {
+		dequeValue, _ := q2.Dequeue()
+		qNew.Enqueue(dequeValue)
+	}
+	return *qNew
+}
