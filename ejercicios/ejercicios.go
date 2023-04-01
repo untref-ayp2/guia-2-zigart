@@ -1,7 +1,6 @@
 package ejercicios
 
 import (
-	"fmt"
 	"guia2/queue"
 	"guia2/stack"
 )
@@ -37,8 +36,6 @@ func Palindromo(cadena string) bool {
 	for i := 0; !queue.IsEmpty() && !stack.IsEmpty(); i++ {
 		valueQueue, _ := queue.Dequeue()
 		valueStack, _ := stack.Pop()
-		fmt.Printf("%v ", valueQueue)
-		fmt.Printf("%v \n", valueStack)
 
 		if valueQueue == valueStack {
 			esPalindromo = true
