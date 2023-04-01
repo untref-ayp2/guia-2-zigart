@@ -6,10 +6,12 @@ import (
 )
 
 func main() {
-	q := queue.Queue{}
+	q := *queue.NewQueue[int](10)
+
 	q.Enqueue(1)
-	q.Enqueue("hola")
-	q.Enqueue("Mundo")
+	q.Enqueue(2)
+	q.Enqueue(3)
+	q.Enqueue(4)
 
 	v, err := q.Dequeue()
 	if err != nil {
@@ -32,26 +34,32 @@ func main() {
 		fmt.Println(v)
 	}
 
-	q.Enqueue(1)
-	q.Enqueue("hola")
-	q.Enqueue("Mundo")
-
 	v, err = q.Dequeue()
-	for err == nil {
+	if err != nil {
+		fmt.Println(err)
+	} else {
 		fmt.Println(v)
-		v, err = q.Dequeue()
 	}
 
-	q.Enqueue(1)
-	q.Enqueue(2)
+	q2 := *queue.NewQueueS[int](10)
 
-	//Modificamos la cola sin usar los métodos definidos
-	q[0] = "Hola"
-	q[1] = "Mundo"
+	q2.Enqueue(1)
+	q2.Enqueue(2)
+	q2.Enqueue(3)
+	q2.Enqueue(4)
 
-	v, err = q.Dequeue()
-	for err == nil {
-		fmt.Printf("%s", v)
-		v, err = q.Dequeue()
+	v, err = q2.Dequeue()
+	if err != nil {
+		fmt.Println(err)
+	} else {
+		fmt.Println(v)
 	}
+
+	v, err = q2.Front()
+	if err != nil {
+		fmt.Println(err)
+	} else {
+		fmt.Println(v)
+	}
+
 }

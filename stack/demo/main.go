@@ -6,7 +6,7 @@ import (
 )
 
 func main() {
-	var s stack.Stack
+	s := stack.NewStack[string](10)
 	cadena := "Hola Mundo"
 	for _, v := range cadena {
 		s.Push(string(v))
